@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "4d2081cd-d433-4b71-8b3a-3e725a5e7c3a",
+		"name": "Catalogue Case API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"categories"
+					]
+				},
+				"description": "# Description\nFetches product categories from database.\n\n# Suggested Return Values\n* #### Object Array\n    * **id (required, string|number):** Distinct id of the category\n    * **name (required, string):** Name of the category"
+			},
+			"response": [
+				{
+					"name": "Listing all categories",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": 1,\r\n        \"name\": \"Shirts\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"name\": \"Trousers\"\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"name\": \"Coats\"\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/categories/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"categories",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				},
+				"description": "# Description\nFetches details of the product category with the given id from database.\n\n# Suggested Return Values\n* #### Object\n    * **id (required, string|number):** Distinct id of the category\n    * **name (required, string):** Name of the category\n    * **description (optional, string):** Description of the category"
+			},
+			"response": [
+				{
+					"name": "Getting category details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/categories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Shirts\",\n    \"description\": \"Shirts for everyone.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"description\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"categories"
+					]
+				},
+				"description": "# Description\nCreates a category with given details on the database.\n\n# Request Details\n* #### Body\n    * **name (required, string):** Name of the category\n    * **description (required, string):** Description of the category"
+			},
+			"response": [
+				{
+					"name": "Creating a new category",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shoes\",\r\n    \"description\": \"Everybody needs shoes.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get Products of a Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/categories/:id/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"categories",
+						":id",
+						"products"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				},
+				"description": "# Description\nFetches products under the category of the given id from database.\n\n# Suggested Return Values\n* #### Object Array\n    * **id (required, string|number):** Distinct id of the product\n    * **name (required, string):** Name of the product\n    * **description (optional, string):** Description of the product\n    * **price (required, number):** Price of the product\n    * **isFavorite (required, boolean):** Is the product favorited or not"
+			},
+			"response": [
+				{
+					"name": "List all products of the category",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/categories/1/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories",
+								"1",
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": 1,\r\n        \"name\": \"Black T-Shirt\",\r\n        \"description\": \"Classic t-shirt.\",\r\n        \"price\": 15,\r\n        \"isFavorite\": false\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"name\": \"White T-Shirt\",\r\n        \"description\": \"Classic t-shirt.\",\r\n        \"price\": 15,\r\n        \"isFavorite\": false\r\n    },\r\n    {\r\n        \"id\": 3,\r\n        \"name\": \"Hoodie\",\r\n        \"description\": \"Best hoodie ever.\",\r\n        \"price\": 22,\r\n        \"isFavorite\": true\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/products/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				},
+				"description": "# Description\nFetches details of product with given id from database.\n\n# Suggested Return Values\n* #### Object\n    * **id (required, string|number):** Distinct id of the product\n    * **name (required, string):** Name of the product\n    * **description (optional, string):** Description of the product\n    * **price (required, number):** Price of the product\n    * **isFavorite (required, boolean):** Is the product favorited or not"
+			},
+			"response": [
+				{
+					"name": "Getting product details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/products/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": 1,\r\n    \"name\": \"Black T-Shirt\",\r\n    \"description\": \"Classic t-shirt.\",\r\n    \"price\": 15,\r\n    \"isFavorite\": false\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\",\r\n    \"description\": \"\",\r\n    \"category\": 0,\r\n    \"price\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "# Description\nCreates a product with given details on the database.\n\n# Request Details\n* #### Body\n    * **name (required, string):** Name of the product\n    * **description (required, string):** Description of the product\n    * **category (required, string|number):** Category id of the product's category\n    * **price (required, number):** Price of the product"
+			},
+			"response": [
+				{
+					"name": "Creating a new product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Red Trousers\",\r\n        \"description\": \"Flaming trousers.\",\r\n        \"category\": 2,\r\n        \"price\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get Sliders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/sliders",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sliders"
+					]
+				},
+				"description": "# Description\nFetches sliders for the featured products.\n\n# Suggested Return Values\n* #### Object Array\n    * **image (required, string):** Url or path of the image\n    * **productId (required, string):** Id of the product slider is featuring"
+			},
+			"response": [
+				{
+					"name": "Getting all  sliders for homepage",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/sliders",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sliders"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"image\": \"shirt.png\",\n        \"productId\": 1\n    },\n    {\n        \"image\": \"trouser-example.png\",\n        \"productId\": 2\n    },\n    {\n        \"image\": \"test.png\",\n        \"productId\": 3\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Create Slider",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"image\": \"\",\r\n    \"productId\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/sliders",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sliders"
+					]
+				},
+				"description": "# Description\nAdds a slider to the webpage slide show featuring products.\n\n# Request Details\n* #### Body\n    * **image (required, string):** Url or path of the slider image\n    * **productId (required, number):** Id of the product slider is featuring"
+			},
+			"response": [
+				{
+					"name": "Create Slider",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"image\": \"something.png\",\r\n        \"productId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/sliders",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sliders"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Add Product To Favorites",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/favorite",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"favorite"
+					]
+				},
+				"description": "# Description\nFavorite a product with given productId.\n\n# Request Details\n* #### Body\n    * **productId (required, number):** Id of the product to favorite"
+			},
+			"response": [
+				{
+					"name": "Adding product to favorites",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/favorite",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"favorite"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
